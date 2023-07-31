@@ -41,8 +41,8 @@ resource "aws_api_gateway_method" "dynamodb_crud" {
 
 data "archive_file" "dynamodb_crud" {
   type        = "zip"
-  source_file = "${path.cwd}/../src/dynamoCrud/main"
-  output_path = "${path.cwd}/../src/dynamoCrud/main.zip"
+  source_file = "${path.cwd}/src/dynamoCrud/main"
+  output_path = "${path.cwd}/src/dynamoCrud/main.zip"
 }
 
 resource "aws_s3_object" "dynamodb_crud" {
