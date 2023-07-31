@@ -11,7 +11,7 @@ env:
 
 jobs:
   terraform:
-    if: github.repository == "vijayneethipudi/aws-golang"
+    if: github.repository == 'vijayneethipudi/aws-golang'
     name: "Terraform Plan"
     runs-on: ubuntu-latest
     permissions:
