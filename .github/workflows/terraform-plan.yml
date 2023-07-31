@@ -7,7 +7,7 @@ env:
   TF_CLOUD_ORGANIZATION: "aws-tfe-cloud"
   TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
   TF_WORKSPACE: "aws-github-golang"
-  CONFIG_DIRECTORY: "./"
+  CONFIG_DIRECTORY: "./terraform"
 
 jobs:
   terraform:
