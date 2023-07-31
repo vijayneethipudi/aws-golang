@@ -1,7 +1,7 @@
 name: "Terraform Plan"
 
-on:
-  pull_request:
+on: [push]
+  
 
 env:
   TF_CLOUD_ORGANIZATION: "aws-tfe-cloud"
@@ -11,7 +11,7 @@ env:
 
 jobs:
   terraform:
-    if: github.repository == 'aws-golang'
+    if: github.repository == "vijayneethipudi/aws-golang"
     name: "Terraform Plan"
     runs-on: ubuntu-latest
     permissions:
