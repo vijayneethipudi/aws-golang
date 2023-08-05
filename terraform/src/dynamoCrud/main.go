@@ -25,7 +25,7 @@ func handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 		resp := respModel{
 			StatusCode: http.StatusOK,
 			Error:      false,
-			Detail:     "Hi Vijay Neethipudi",
+			Detail:     "Hi Vijay Neethipudi 1234",
 			Message:    "Data Fetched Successfully",
 		}
 		respData, err := json.Marshal(resp)

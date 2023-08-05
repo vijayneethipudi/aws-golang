@@ -43,3 +43,11 @@ terraform.rc
 **.terraform.lock.hcl
 **providers.tf~
 **.DS_Store**
+*.zip
+**providers.txt**
+**after.sh**
+**before.sh**
+main
+**main.zip**
+terraform/go.mod
+terraform/go.sum

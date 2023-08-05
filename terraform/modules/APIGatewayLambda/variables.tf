@@ -44,3 +44,11 @@ variable "api_stages" {
 variable "go_config" {
   type = map(string)
 }
+
+variable "ddb_crud_build_paths" {
+  type = map(string)
+}
+
+variable "hello_world_build_paths" {
+  type = map(string)
+}

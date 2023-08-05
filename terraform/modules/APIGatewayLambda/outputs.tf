@@ -13,12 +13,14 @@ output "restapi_base_url" {
 
 output "endpoints" {
   value = {
-    dynamodb_crud = aws_api_gateway_resource.dynamodb_crud.path
+    dynamodb_crud = aws_api_gateway_resource.dynamodb_crud.path,
+    hello_world   = aws_api_gateway_resource.hello_world.path
   }
 }
 
 output "lambda_latest_version" {
   value = {
-    dynamodb_crud = aws_lambda_function.dynamodb_crud.version
+    dynamodb_crud = aws_lambda_function.dynamodb_crud.version,
+    hello_world   = aws_lambda_function.hello_world.version
   }
 }

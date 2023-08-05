@@ -31,6 +31,7 @@ resource "aws_api_gateway_deployment" "restapi" {
   }
   depends_on = [
     aws_api_gateway_integration.dynamodb_crud,
+    aws_api_gateway_integration.hello_world,
   ]
 }
 
