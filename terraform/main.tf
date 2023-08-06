@@ -40,7 +40,6 @@ module "APIGatewayLambda" {
   region                 = var.region
   tags                   = var.tags
   depends_on = [
-    null_resource.go_build,
     module.IAM,
   ]
 }
