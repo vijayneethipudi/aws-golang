@@ -19,28 +19,28 @@ locals {
 }
 
 
-// build the binary for the lambda function in a specified path
-resource "null_resource" "go_build" {
-  for_each = local.paths
+# // build the binary for the lambda function in a specified path
+# resource "null_resource" "go_build" {
+#   for_each = local.paths
 
-  triggers = {
-    hash_go_mod = filemd5(each.value.go_mod)
-    hash_go_sum = filemd5(each.value.go_sum)
-  }
+#   triggers = {
+#     hash_go_mod = filemd5(each.value.go_mod)
+#     hash_go_sum = filemd5(each.value.go_sum)
+#   }
 
-  provisioner "local-exec" {
-    command = "cp -f ${each.value.go_mod} ."
-  }
+#   provisioner "local-exec" {
+#     command = "cp -f ${each.value.go_mod} ."
+#   }
 
-  provisioner "local-exec" {
-    command = "cp -f ${each.value.go_sum} ."
-  }
+#   provisioner "local-exec" {
+#     command = "cp -f ${each.value.go_sum} ."
+#   }
 
-  provisioner "local-exec" {
-    command = "GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOFLAGS=-trimpath go build -mod=readonly -ldflags='-s -w' -o ${each.value.binary_path} ${each.value.src_path}"
-    # command = "GOOS=linux GOARCH=amd64 go build -o ${each.value.binary_path} ${each.value.src_path}"
-    # command = "/bin/bash ${path.cwd}/src/dynamoCrud/build.sh"
-    # command = "echo HELLO-WORLD!"
-  }
-}
+#   provisioner "local-exec" {
+#     command = "GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOFLAGS=-trimpath go build -mod=readonly -ldflags='-s -w' -o ${each.value.binary_path} ${each.value.src_path}"
+#     # command = "GOOS=linux GOARCH=amd64 go build -o ${each.value.binary_path} ${each.value.src_path}"
+#     # command = "/bin/bash ${path.cwd}/src/dynamoCrud/build.sh"
+#     # command = "echo HELLO-WORLD!"
+#   }
+# }
 

@@ -22,6 +22,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Setup GO 
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.19
+
+      - name: GO Build ddbcrud lambda
+        working-directory: ./terraform/src/dynamoCrud
+        run: GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOFLAGS=-trimpath go build -mod=readonly -ldflags='-s -w' -o main main.go
+      
+      - name: ddbcrud zip
+        working-directory: ./terraform/src/dynamoCrud
+        run: zip -j main.zip main 
+
+      - name: GO Build helloworld lambda 
+        working-directory: ./terraform/src/helloWorld
+        run: GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOFLAGS=-trimpath go build -mod=readonly -ldflags='-s -w' -o main main.go
+      
+      - name: zip
+        working-directory: ./terraform/src/helloWorld
+        run: zip -j main.zip main 
+
       - name: Upload Configuration
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
         id: apply-upload

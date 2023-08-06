@@ -73,7 +73,7 @@ resource "aws_s3_object" "dynamodb_crud" {
   bucket = var.deployment_bucket_id # "dev-us-east-1-deployment-packages"
   key    = "dynamoCrud/main.zip"
   source = data.archive_file.dynamodb_crud.output_path
-  # etag   = filemd5(data.archive_file.dynamodb_crud.output_path)
+  etag   = filemd5(data.archive_file.dynamodb_crud.output_path)
 }
 
 resource "aws_lambda_function" "dynamodb_crud" {
@@ -139,7 +139,7 @@ resource "aws_s3_object" "hello_world" {
   bucket = var.deployment_bucket_id # "dev-us-east-1-deployment-packages"
   key    = "helloWorld/main.zip"
   source = data.archive_file.hello_world.output_path
-  # etag   = filemd5(data.archive_file.hello_world.output_path)
+  etag   = filemd5(data.archive_file.hello_world.output_path)
 }
 
 resource "aws_lambda_function" "hello_world" {
